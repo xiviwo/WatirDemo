@@ -1,6 +1,6 @@
 Watir and Cucumber Example Demo
 ============
-Watir and cucumber is very nice web automation test tool to work with, here I would provide as simple demo application based on official watir example.
+Watir and cucumber is very nice web automation test tool to work with, here I would provide as simple demo application based on official watir example. It will opens up a firefox browser, navigate to 'http://bit.ly/watir-example', fill in the form and submit, and user should be able to see response text with 'Your response has been recorded.'.
 
 ##Output
 ```bash
@@ -83,15 +83,15 @@ end
 
 
 Then(/^I can input mutiple value$/) do
-  	@browser.text_field(:name => 'entry.1000000').set 'Watir'
+    @browser.text_field(:name => 'entry.1000000').set 'Watir'
 
-	@browser.textarea(:name => 'entry.1000001').set "I come here from Australia. \n The weather is great here."
-	@browser.radio(:value => 'Watir').set
-	@browser.checkbox(:value => 'Ruby').set
-	@browser.checkbox(:value => 'Python').set
-	@browser.checkbox(:value => 'Python').clear
+  @browser.textarea(:name => 'entry.1000001').set "I come here from Australia. \n The weather is great here."
+  @browser.radio(:value => 'Watir').set
+  @browser.checkbox(:value => 'Ruby').set
+  @browser.checkbox(:value => 'Python').set
+  @browser.checkbox(:value => 'Python').clear
 
-	@browser.select_list(:name => 'entry.1000004').select 'Chrome'
+  @browser.select_list(:name => 'entry.1000004').select 'Chrome'
 
 end
 
@@ -104,10 +104,15 @@ Then(/^I should see the successful message$/) do
   puts @browser.text.include? 'Your response has been recorded.'
 end
 ```
+So, obviously, each block of codes here corresponds to one step in the feature definition file.
+>For example:
+>For step: 'When I go to the homepage', the corresponding code block is:
+>When(/^I go to the homepage$/) do
+  @browser.goto 'http://bit.ly/watir-example'
+end
 
 ##Done 
 Run cucumber in the project folder, you will see the expect result.
 ```bash
 cucumber
 ```
-
